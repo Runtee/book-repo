@@ -1,0 +1,93 @@
+<% include ('includes/head'); %>
+
+    <body class="upload">
+
+        <% include ('includes/header'); %>
+
+
+    <main class="p-5 m-1 mx-5">
+        <div class="bg-dark text-bg-dark p-4 opacity-75">
+            <div class="p-5">
+                <div class="text-center text-uppercase mb-2">
+                    Edit file
+                </div>
+                <form>
+                <div class="row text-uppercase">
+                    
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="title" class="form-label">title</label>
+                                <input type="text" class="form-control bg-dark text-bg-dark" name="title" id="title">
+                            </div>
+                            <div class="mb-3">
+                                <label for="language" class="form-label">language</label>
+                                <input type="text" class="form-control bg-dark text-bg-dark" name="language" id="language">
+                            </div>
+                            <div class=" mb-3">
+                                <label for="type" class="form-label">type</label>
+                                <select class="form-select bg-dark text-bg-dark" required id="type">
+                                    <option selected=""></option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                  </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="extension" class="form-label"> extension </label>
+                                <input type="text" class="form-control bg-dark text-bg-dark" name="extension" id="extension">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="publisher" class="form-label">publisher</label>
+                                <input type="text" class="form-control bg-dark text-bg-dark" name="publisher" id="publisher">
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="author" class="form-label">author</label>
+                                <input type="text" class="form-control bg-dark text-bg-dark" name="author" id="author">
+                            </div>
+                            <div class="mb-3">
+                                <label for="year" class="form-label">year</label>
+                                <input type="text" class="form-control bg-dark text-bg-dark" name="year" id="year">
+                            </div>
+                            <div class="mb-3">
+                                <label for="pages" class="form-label">pages</label>
+                                <input type="text" class="form-control bg-dark text-bg-dark" name="pages" id="pages">
+                            </div>
+                            <div class="mb-3">
+                                <label for="categories" class="form-label">categories</label>
+                                <input type="text" class="form-control bg-dark text-bg-dark" name="categories" id="categories">
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="filesize" class="form-label">file </label>
+                                    <input type="file" class="form-control bg-dark text-bg-dark" name="filesize" id="filesize">
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="bookImage" class="form-label">book Image</label>
+                                    <input type="file" class="form-control bg-dark text-bg-dark" name="bookImage" id="bookImage">
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-warning btn-lg">Update</button>
+                        </div>
+                    
+                </div>
+            </form>
+            </div>
+        </div>
+    </main>
+
+
+    <% include ('includes/footer'); %> 
+
+</body>
+
+</html>

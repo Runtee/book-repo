@@ -3,11 +3,15 @@ const Archive = require("../models/archive");
 exports.search = (req, res) => {
     Archive.find({})
         .then((book) => {
-            res.redirect('/add-book')
+            res.render('search',{
+                book:book
+            })
         })
         .catch((error) => {
             req.flash("error", error)
-            res.redirect('/add-book')
+            res.render('search',{
+                error:error
+            })
         })
 }
 exports.viewBook = async (req, res) => {

@@ -1,6 +1,4 @@
 const mongoose=require('mongoose');
-
-const bcrypt = require('bcrypt')
 const Schema=mongoose.Schema;
 
 const archiveSchema=new Schema({
@@ -16,7 +14,7 @@ const archiveSchema=new Schema({
         type:String,
         required:true
     },
-    filesize:{
+    file:{
         type:String,
         required:true
     },
@@ -43,18 +41,18 @@ const archiveSchema=new Schema({
     categories:{
         type:[],
         required:true
-    }
+    },
+    uploader:{
+        type:String,
+        required:true
+    },
+    type:{
+        type:String,
+        required:true
+    },
 
 })
 
-archiveSchema.pre('save', function (next) {
-    const user = this
-    bcrypt.hash(user.password, 10, (error, hash) => {
-        user.password = hash
-        next()
-    })
-
-})
 const Archive =  mongoose.model('archive',archiveSchema);
 
 module.exports= Archive

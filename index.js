@@ -5,6 +5,7 @@ const expressSession = require('express-session');
 const mongoose = require('mongoose')
 const app = express();
 const fileUpload = require('express-fileupload')
+const route = require('./routes/index')
 
 
 
@@ -29,13 +30,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
 app.use(fileUpload())
 app.use(express.json())
-sapp.use(express.urlencoded())
+app.use(express.urlencoded())
+
+global.loggedIn = null;
+global.adminLoggedIn = null
+app.use("*", (req, res, next) => {
+loggedIn = req.session.userId;
+adminLoggedIn = req.session.adminId;
+next()
+});
+app.use(route)
 app.use((req, res, next) => {
     res.status(404).render('404', { pageTitle: 'Page Not Found' });
 next()
 })
-
-
 app.listen(3000, () => {
     console.log('listening on port 3000');
 });

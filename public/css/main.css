@@ -1,0 +1,39 @@
+.title {
+    font-weight: bolder;
+    color: #ffc107;
+}
+
+.bookimg {
+    width: 100%;
+}
+
+@media screen and (max-width: 967px) {
+    main {
+        margin-top: 80px;
+    }
+}
+
+body {
+    
+    background-image: linear-gradient(rgba(0, 0, 0, 0.473), rgba(0, 0, 0, 0.438)),url('../imgs/pexels-genaro-servín-757855.jpg');
+    background-size: cover;
+}
+.upload {
+    
+    background-image: linear-gradient(rgba(0, 0, 0, 0.473), rgba(0, 0, 0, 0.438)),url('../imgs/pexels-element-digital-1370298.jpg');
+    background-size: cover;
+}
+.letter-spacing-4{
+    letter-spacing: .4em !important;
+}
+.text-shadow {
+    text-shadow: 2px 2px 2px rgb(0 0 0 / 10%);
+}
+.sign{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.473), rgba(0, 0, 0, 0.438)), url('../imgs/pexels-pixabay-256455.jpg');
+    background-size: cover;
+}
+.book{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.95)), url('../imgs/c.jpg');
+    background-size: cover;
+}

@@ -1,0 +1,44 @@
+<%- include ('includes/head'); -%>
+
+    <body class="upload">
+
+        <%- include ('includes/header'); -%>
+
+    <main class="p-5 m-1 mx-5">
+        <div class="bg-light text-bg-light p-4 opacity-75 mx-5">
+            <div class="p-5">
+                <div class="text-center text-uppercase mb-2">
+                <strong>Profile </strong>    
+                </div>
+                <form method="post" action="/profile">
+                <div class="row text-uppercase mx-5">
+                    
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label"><strong>email</strong>  </label>
+                                <input type="text" class="form-control bg-light text-bg-light p-2" name="email" id="email" value="<%= user.email %> ">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="publisher" class="form-label"><strong>full name</strong> </label>
+                                <input type="text" class="form-control bg-light text-bg-light p-2" name="name" id="publisher" value="<%= user.name %> ">
+                            </div>
+
+                    
+                        <div class="text-center">
+                            <button class="btn btn-warning btn-lg">Update</button>
+                        </div>
+                    
+                </div>
+            </form>
+            </div>
+        </div>
+    </main>
+
+
+    <%- include ('includes/footer'); -%> 
+
+
+</body>
+
+</html>

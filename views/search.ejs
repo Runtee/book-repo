@@ -1,212 +1,89 @@
-<% include ('includes/head'); %>
+<%- include ('includes/head'); -%>
 
-    <body class="">
+<body class="">
 
-        <% include ('includes/header'); %>
+  <%- include ('includes/header'); -%>
 
 
-    <div class="my-5 mt-5">
-        <div class="col-lg-8 d-grid align-items-center form-group m-auto bg-light p-2 px-4 rounded-5">
-            <form action="#">
-                <div class="row">
-                    <div class="col-lg-6 d-flex align-items-center form-group">
-                        <input class="form-control border-0 shadow-0" type="text" name="search"
-                            placeholder="What are you searching for?">
-                    </div>
-                    <div class="col-lg-4 d-flex align-items-center form-group me-auto">
-                        <div class="input-label-absolute input-label-absolute-right w-100">
-                            <input class="form-control border-0 shadow-0" type="text" name="type" placeholder="type"
-                                id="location">
-                        </div>
-                    </div>
+  <div class="my-5 mt-5">
+    <div class="col-lg-8 d-grid align-items-center form-group m-auto bg-light p-2 px-4 rounded-5">
+      <form action="/search" method="get">
+        <div class="row">
+          <div class="col-lg-6 d-flex align-items-center form-group">
+            <input class="form-control border-0 shadow-0" type="text" name="text" placeholder="What are you searching for?">
+          </div>
+          <div class="col-lg-4 d-flex align-items-center form-group me-auto">
+            <div class="input-label-absolute input-label-absolute-right w-100">
+              <input class="form-select border-0 shadow-0" type="text" name="type" placeholder="type">
+            </div>
+          </div>
 
-                    <div class="col-lg-2 d-grid">
-                        <button class="btn btn-warning rounded-pill h-100" type="submit">Search </button>
-                    </div>
-                </div>
-            </form>
+          <div class="col-lg-2 d-grid">
+            <button class="btn btn-warning rounded-pill h-100" type="submit">Search </button>
+          </div>
         </div>
+      </form>
     </div>
+  </div>
+
+  <% if (books) { %>
+  <div class="bd-example my-0" style="background-color: #fff;">
+    <table class="table table-hover table-striped my-0">
+      <thead>
+        <tr>
+          <th scope="col">Cover</th>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+          <th scope="col">Publisher</th>
+          <th scope="col">Year</th>
+          <th scope="col">Type</th>
+          <th scope="col">Language</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for( let i = 0; i < books.length; i++ ) { %>
+          
+        <tr>
+          
+          <td><a href="http://localhost:3000/book/<%=books[i]._id%>"><img src="<%=books[i].bookImage%>" width="70" height="100"></a></td>
+          <td><strong><a href="http://localhost:3000/book/<%=books[i]._id%>"><%=books[i].title  %></strong>
+            <p><%=books[i].about  %></p></a>
+          </td>
+          <td><%=books[i].author  %></td>
+          <td><%=books[i].publisher  %></td>
+          <td><%=books[i].year  %></td>
+          <td><%=books[i].type  %></td>
+          <td><%=books[i].language  %></td>
+        </tr>
+
+        <% } %>
+
+      </tbody>
+
+    </table>
+  </div>
+  <% }  else { %>
+  <% if (featured) { %>
+<div class="p-5 row">
+    <h1 class="text-white text-uppercase pb-4">featured books</h1>
 
 
-    <div class="bd-example my-0" style="background-color: #fff;">
-        <table class="table table-hover table-striped my-0">
-            <thead>
-                <tr>
-                    <th scope="col">Cover</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Author</th>
-                    <th scope="col">Publisher</th>
-                    <th scope="col">Year</th>
-                    <th scope="col">Type</th>
-                    <th scope="col">Language</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><img src="./imgs/a.jpg" width="70" height="100"></td>
-                    <td><strong>Lecture notes-monograph series / Institute of Mathematical Statistics 5</strong>
-                        <p>Inequalities in statistics and probability: proceedings of the Symposium on Inequalities
-                            in Statistics and Probability, October 27-30, 1982, Lincoln, Nebraska</p>
-                    </td>
-                    <td>Hawkins, Anne S. ;Panel, School Statistics</td>
-                    <td>Institute of Mathematical Statistics</td>
-                    <td>2019</td>
-                    <td> Scientific Articles</td>
-                    <td>English</td>
-                </tr>
-                <tr>
-                    <td><img src="./imgs/b.png" width="70" height="100"></td>
-                    <td><strong>Lecture notes-monograph series / Institute of Mathematical Statistics 5</strong>
-                        <p>Inequalities in statistics and probability: proceedings of the Symposium on Inequalities
-                            in Statistics and Probability, October 27-30, 1982, Lincoln, Nebraska</p>
-                    </td>
-                    <td>Hawkins, Anne S. ;Panel, School Statistics</td>
-                    <td>Institute of Mathematical Statistics</td>
-                    <td>2019</td>
-                    <td> Scientific Articles
+    <% for( let i = 0; i < featured.length; i++ ) { %>
+        <div class="col-3 card m-1 p-0" style="width: 8.1cm;">
+            <img src="<%=featured[i].bookImage%>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%=featured[i].title%></h5>
+              <p class="card-text"><%=featured[i].about%></p>
+              <a href="http://localhost:3000/book/<%=featured[i].id%>" class="btn btn-warning">full details</a>
+            </div>
+          </div>
+  <% } %>
+</div>
+  <% } %>
+  <% } 
+    %>
 
-                    </td>
-                    <td>English</td>
-                </tr>
-                <tr>
-                    <td><img src="./imgs/c.jpg" width="70" height="100"></td>
-                    <td><strong>Lecture notes-monograph series / Institute of Mathematical Statistics 5</strong>
-                        <p>Inequalities in statistics and probability: proceedings of the Symposium on Inequalities
-                            in Statistics and Probability, October 27-30, 1982, Lincoln, Nebraska</p>
-                    </td>
-                    <td>Hawkins, Anne S. ;Panel, School Statistics</td>
-                    <td>Institute of Mathematical Statistics</td>
-                    <td>2019</td>
-                    <td> Scientific Articles</td>
-                    <td>English</td>
-                </tr>
-                <tr>
-                    <td><img src="./imgs/d.jpg" width="70" height="100"></td>
-                    <td><strong>Lecture notes-monograph series / Institute of Mathematical Statistics 5</strong>
-                        <p>Inequalities in statistics and probability: proceedings of the Symposium on Inequalities
-                            in Statistics and Probability, October 27-30, 1982, Lincoln, Nebraska</p>
-                    </td>
-                    <td>Hawkins, Anne S. ;Panel, School Statistics</td>
-                    <td>Institute of Mathematical Statistics
-
-                    </td>
-                    <td>2019</td>
-                    <td> Scientific Articles</td>
-                    <td>English</td>
-                </tr>
-
-                <tr>
-                    <td><img src="./imgs/a.jpg" width="70" height="100"></td>
-                    <td><strong>Lecture notes-monograph series / Institute of Mathematical Statistics 5</strong>
-                        <p>Inequalities in statistics and probability: proceedings of the Symposium on Inequalities
-                            in Statistics and Probability, October 27-30, 1982, Lincoln, Nebraska</p>
-                    </td>
-                    <td>Hawkins, Anne S. ;Panel, School Statistics</td>
-                    <td>Institute of Mathematical Statistics</td>
-                    <td>2019</td>
-                    <td> Scientific Articles</td>
-                    <td>English</td>
-                </tr>
-                <tr>
-                    <td><img src="./imgs/b.png" width="70" height="100"></td>
-                    <td><strong>Lecture notes-monograph series / Institute of Mathematical Statistics 5</strong>
-                        <p>Inequalities in statistics and probability: proceedings of the Symposium on Inequalities
-                            in Statistics and Probability, October 27-30, 1982, Lincoln, Nebraska</p>
-                    </td>
-                    <td>Hawkins, Anne S. ;Panel, School Statistics</td>
-                    <td>Institute of Mathematical Statistics</td>
-                    <td>2019</td>
-                    <td> Scientific Articles
-
-                    </td>
-                    <td>English</td>
-                </tr>
-                <tr>
-                    <td><img src="./imgs/c.jpg" width="70" height="100"></td>
-                    <td><strong>Lecture notes-monograph series / Institute of Mathematical Statistics 5</strong>
-                        <p>Inequalities in statistics and probability: proceedings of the Symposium on Inequalities
-                            in Statistics and Probability, October 27-30, 1982, Lincoln, Nebraska</p>
-                    </td>
-                    <td>Hawkins, Anne S. ;Panel, School Statistics</td>
-                    <td>Institute of Mathematical Statistics</td>
-                    <td>2019</td>
-                    <td> Scientific Articles</td>
-                    <td>English</td>
-                </tr>
-                <tr>
-                    <td><img src="./imgs/d.jpg" width="70" height="100"></td>
-                    <td><strong>Lecture notes-monograph series / Institute of Mathematical Statistics 5</strong>
-                        <p>Inequalities in statistics and probability: proceedings of the Symposium on Inequalities
-                            in Statistics and Probability, October 27-30, 1982, Lincoln, Nebraska</p>
-                    </td>
-                    <td>Hawkins, Anne S. ;Panel, School Statistics</td>
-                    <td>Institute of Mathematical Statistics
-
-                    </td>
-                    <td>2019</td>
-                    <td> Scientific Articles</td>
-                    <td>English</td>
-                </tr>
-                <tr>
-                    <td><img src="./imgs/a.jpg" width="70" height="100"></td>
-                    <td><strong>Lecture notes-monograph series / Institute of Mathematical Statistics 5</strong>
-                        <p>Inequalities in statistics and probability: proceedings of the Symposium on Inequalities
-                            in Statistics and Probability, October 27-30, 1982, Lincoln, Nebraska</p>
-                    </td>
-                    <td>Hawkins, Anne S. ;Panel, School Statistics</td>
-                    <td>Institute of Mathematical Statistics</td>
-                    <td>2019</td>
-                    <td> Scientific Articles</td>
-                    <td>English</td>
-                </tr>
-                <tr>
-                    <td><img src="./imgs/b.png" width="70" height="100"></td>
-                    <td><strong>Lecture notes-monograph series / Institute of Mathematical Statistics 5</strong>
-                        <p>Inequalities in statistics and probability: proceedings of the Symposium on Inequalities
-                            in Statistics and Probability, October 27-30, 1982, Lincoln, Nebraska</p>
-                    </td>
-                    <td>Hawkins, Anne S. ;Panel, School Statistics</td>
-                    <td>Institute of Mathematical Statistics</td>
-                    <td>2019</td>
-                    <td> Scientific Articles
-
-                    </td>
-                    <td>English</td>
-                </tr>
-                <tr>
-                    <td><img src="./imgs/c.jpg" width="70" height="100"></td>
-                    <td><strong>Lecture notes-monograph series / Institute of Mathematical Statistics 5</strong>
-                        <p>Inequalities in statistics and probability: proceedings of the Symposium on Inequalities
-                            in Statistics and Probability, October 27-30, 1982, Lincoln, Nebraska</p>
-                    </td>
-                    <td>Hawkins, Anne S. ;Panel, School Statistics</td>
-                    <td>Institute of Mathematical Statistics</td>
-                    <td>2019</td>
-                    <td> Scientific Articles</td>
-                    <td>English</td>
-                </tr>
-                <tr>
-                    <td><img src="./imgs/d.jpg" width="70" height="100"></td>
-                    <td><strong>Lecture notes-monograph series / Institute of Mathematical Statistics 5</strong>
-                        <p>Inequalities in statistics and probability: proceedings of the Symposium on Inequalities
-                            in Statistics and Probability, October 27-30, 1982, Lincoln, Nebraska</p>
-                    </td>
-                    <td>Hawkins, Anne S. ;Panel, School Statistics</td>
-                    <td>Institute of Mathematical Statistics
-
-                    </td>
-                    <td>2019</td>
-                    <td> Scientific Articles</td>
-                    <td>English</td>
-                </tr>
-            </tbody>
-
-        </table>
-    </div>
-
-
-    <% include ('includes/footer'); %> 
+  <%- include ('includes/footer'); -%>
 
 </body>
 

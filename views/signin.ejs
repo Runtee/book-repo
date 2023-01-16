@@ -1,13 +1,34 @@
-<% include ('includes/head'); %>
+<%- include ('includes/head'); -%>
 
 <body class="sign">
 
-  <% include ('includes/header'); %>
+  <%- include ('includes/header'); -%>
 
 
   <main>
 
     <div>
+      <% if(errors !=null && errors.length> 0){ %>
+
+        <% for (var i=0; i < errors.length; i++) { %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <%= errors[i] %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <% } %>
+        <% } %>
+    
+    
+        <% if(success !=null && success.length> 0){ %>
+    
+        <% for (var i=0; i < success.length; i++) { %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <%= success[i] %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <% } %>
+        <% } %>
+    
 
       <div class="container-lg p-5 rounded-4 m-auto signin">
         <h1 class="text-white">LOGIN
@@ -30,7 +51,7 @@
     </div>
   </main>
 
-  <% include ('includes/footer'); %>
+  <%- include ('includes/footer'); -%>
 
 </body>
 

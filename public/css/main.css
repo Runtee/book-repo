@@ -14,26 +14,137 @@
 }
 
 body {
-    
-    background-image: linear-gradient(rgba(0, 0, 0, 0.473), rgba(0, 0, 0, 0.438)),url('../imgs/pexels-genaro-servín-757855.jpg');
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.836), rgba(0, 0, 0, 0.836)), url('../imgs/pexels-genaro-servín-757855.jpg');
     background-size: cover;
 }
+
 .upload {
-    
-    background-image: linear-gradient(rgba(0, 0, 0, 0.473), rgba(0, 0, 0, 0.438)),url('../imgs/pexels-element-digital-1370298.jpg');
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.836), rgba(0, 0, 0, 0.836)), url('../imgs/pexels-element-digital-1370298.jpg');
     background-size: cover;
 }
-.letter-spacing-4{
+
+.letter-spacing-4 {
     letter-spacing: .4em !important;
 }
+
 .text-shadow {
     text-shadow: 2px 2px 2px rgb(0 0 0 / 10%);
 }
-.sign{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.473), rgba(0, 0, 0, 0.438)), url('../imgs/pexels-pixabay-256455.jpg');
+
+.sign {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.836), rgba(0, 0, 0, 0.836)), url('../imgs/pexels-pixabay-256455.jpg');
     background-size: cover;
 }
-.book{
+
+.admin {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.796), rgba(0, 0, 0, 0.796)), url('../imgs/d.jpg');
+    background-size: cover;
+}
+
+.book {
     background-image: linear-gradient(rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.95)), url('../imgs/c.jpg');
     background-size: cover;
+}
+
+/* The Modal (background) */
+.modaal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modaal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    margin-top: 10%;
+    padding: 0;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modaal-header {
+    padding: 2px 16px;
+    background-color: #494949;
+    color: #fff;
+}
+
+.modaal-body {
+    padding: 2px 16px;
+}
+
+.modaal-footer {
+    padding: 2px 16px;
+    color: white;
+}
+.bg-user{
+    background-color: #08083a;
+}
+.bg-admin{
+    background-color: #3d0615;
 }

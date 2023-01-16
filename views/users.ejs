@@ -1,13 +1,33 @@
-<% include ('includes/head'); %>
+<%- include ('includes/head'); -%>
 
 <body class="upload">
 
-  <% include ('includes/header'); %>
+  <%- include ('includes/header'); -%>
 
 
   <div class="text-light mt-5">
-    <h1 class="text-center">Users</h1>
+    <h1 class="text-center text-white">Users</h1>
   </div>
+  <% if(errors !=null && errors.length> 0){ %>
+
+    <% for (var i=0; i < errors.length; i++) { %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= errors[i] %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <% } %>
+    <% } %>
+
+
+    <% if(success !=null && success.length> 0){ %>
+
+    <% for (var i=0; i < success.length; i++) { %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <%= success[i] %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <% } %>
+    <% } %>
   <div class="bd-example m-3
      mt-1 p-2 " style="background-color: #fff;">
     <table class="table table-hover table-striped my-0">
@@ -20,71 +40,21 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Hawkins, Anne S</td>
-          <td>ekwo.chinonso.01@yahoo</td>
-          <td>20</td>
-          <td>
-            <div class="dropstart">
-              <button class="btn btn-secondary">
-                Delete
-              </button>
-
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Hawkins, Anne S</td>
-          <td>ekwo.chinonso.01@yahoo</td>
-          <td>20</td>
-          <td>
-            <div class="dropstart">
-              <button class="btn btn-secondary">
-                Delete
-              </button>
-
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Hawkins, Anne S</td>
-          <td>ekwo.chinonso.01@yahoo</td>
-          <td>20</td>
-          <td>
-            <div class="dropstart">
-              <button class="btn btn-secondary">
-                Delete
-              </button>
-
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Hawkins, Anne S</td>
-          <td>ekwo.chinonso.01@yahoo</td>
-          <td>20</td>
-          <td>
-            <div class="dropstart">
-              <button class="btn btn-secondary">
-                Delete
-              </button>
-
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Hawkins, Anne S</td>
-          <td>ekwo.chinonso.01@yahoo</td>
-          <td>20</td>
-          <td>
-            <div class="dropstart">
-              <button class="btn btn-secondary">
-                Delete
-              </button>
-
-            </div>
-          </td>
-        </tr>
+        <% for( let i = 0; i < users.length; i++ ) { %>
+          <tr>
+            <td><%= users[i].name %> </td>
+            <td><%= users[i].email %></td>
+            <td><%= users[i].total_uploads %></td>
+            <td>
+              <div class="dropstart">
+                <button class="btn btn-secondary">
+                  Delete
+                </button>
+  
+              </div>
+            </td>
+          </tr>
+        <% } %>
 
       </tbody>
 
@@ -92,7 +62,7 @@
   </div>
 
 
-  <% include ('includes/footer'); %>
+  <%- include ('includes/footer'); -%>
 
 </body>
 

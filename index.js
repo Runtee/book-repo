@@ -4,14 +4,13 @@ const path = require('path');
 const expressSession = require('express-session');
 const mongoose = require('mongoose')
 const app = express();
-const fileUpload = require('express-fileupload')
 const route = require('./routes/index')
 
 
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
-mongoose.connect('mongodb://localhost:27017/rewardsdb',
+mongoose.connect('mongodb://localhost:27017/book',
     { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
         if (db) {
             console.log('database connected successfully')
@@ -25,10 +24,10 @@ app.use(expressSession({
     saveUninitialized: true,
     resave: true
 }));
+app.use('/database', express.static(path.join(__dirname, 'database')));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
-app.use(fileUpload())
 app.use(express.json())
 app.use(express.urlencoded())
 

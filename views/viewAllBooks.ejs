@@ -5,7 +5,7 @@
 
     <%- include ('includes/header'); -%>
 
-    <div class="mt-5 p-2"> <h1 class="text-center text-white">Your Uploads</h1></div>
+    <div class="mt-5 p-2"> <h1 class="text-center text-white">All Uploads</h1></div>
     <% if(errors !=null && errors.length> 0){ %>
 
       <% for (var i=0; i < errors.length; i++) { %>
@@ -38,6 +38,7 @@
                     <th scope="col">Publisher</th>
                     <th scope="col">Year</th>
                     <th scope="col">Type</th>
+                    <th scope="col">Uploader</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -54,6 +55,7 @@
                       <td><%=books[i].publisher  %></td>
                       <td><%=books[i].year  %></td>
                       <td><%=books[i].type  %></td>
+                      <td><%=books[i].uploader.name  %></td>
                       <td><div class="dropstart">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Action

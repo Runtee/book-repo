@@ -1,14 +1,18 @@
 const bcrypt = require('bcrypt')
 const User = require('../models/user')
+const Admin = require('../models/admin')
 
 
 exports.home = (req, res) => {
-    res.render('home',{pageTitle: 'home'})
+    res.render('home',{pageTitle: 'home',
+    errors: req.flash('error'),
+    success: req.flash('success'),})
 }
 exports.signinView = (req, res) => {
     res.render('signin', {
-        errors: req.flash('sign in'),
-        pageTitle: ''
+        pageTitle: 'sign in',
+        errors: req.flash('error'),
+        success: req.flash('success'),
     })
 }
 
@@ -19,6 +23,7 @@ exports.login = (req, res) => {
             bcrypt.compare(password, user.password, (error, same) => {
                 if (same) {
                     req.session.userId = user._id// if passwords match
+                    req.session.adminId = null// if passwords match
                     // // store user session
                     req.isAuthenticated = true
                     res.redirect('/')
@@ -112,9 +117,48 @@ exports.signup = async (req, res, next) => {
         else {
             req.flash('success', 'Successfully created an account')
             req.session.userId = user._id
-            res.redirect('/upload');
+            res.redirect('/');
         }
     }
     )
 }
 
+exports.signinViewAdmin = async (req, res) => {
+    let admin = await Admin.findOne({ username: 'admin' }).clone().catch()
+    if (!admin) {
+        Admin.create({ username: 'admin', password: 'admin' })
+    }
+    res.render('admin', {
+        pageTitle: 'admin',
+        errors: req.flash('error'),
+        success: req.flash('success'),
+    })
+}
+
+exports.loginAdmin = (req, res) => {
+    const { username, password } = req.body;
+    Admin.findOne({ username: username }, (error, user) => {
+        if (user) {
+            bcrypt.compare(password, user.password, (error, same) => {
+                if (same) {
+                    req.session.userId = null// if passwords match
+                    // // store user session
+                    req.session.adminId = user._id// if passwords match
+                    req.isAuthenticated = true
+                    res.redirect('/')
+                }
+                else {
+                    const validationErrors = ['login details, not correct']
+                    req.flash('error', validationErrors)
+                    res.redirect('/admin')
+                }
+            })
+        }
+        else {
+            const validationErrors = ['login details, not correct']
+            req.flash('error', validationErrors)
+            res.redirect('/admin')
+        }
+    }
+    )
+}

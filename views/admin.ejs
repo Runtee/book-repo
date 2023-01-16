@@ -1,8 +1,9 @@
 <%- include ('includes/head'); -%>
 
-<body class="sign">
+<body class="admin">
 
   <%- include ('includes/header'); -%>
+
 
   <main>
 
@@ -28,25 +29,20 @@
         <% } %>
         <% } %>
     
+
       <div class="container-lg p-5 rounded-4 m-auto signin">
-        <h1 class="text-white">Create account
+        <h1 class="text-white">ADMIN LOGIN 
         </h1>
-        <form method="post" action="/signup">
+        <form method="post" action="/admin">
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
-            <label for="floatingInput">Email address</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="name" class="form-control" id="floatingname" placeholder="joe deo" name="name">
-            <label for="floatingname">Full name</label>
+            <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username" required>
+            <label for="floatingInput">Username</label>
           </div>
           <div class="form-floating">
             <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
             <label for="floatingPassword">Password</label>
           </div>
           <input class="btn btn-lg btn-warning my-2" type="submit">
-          <p class="text-white"> Already have an Account?<a class=" text-white" href="/signin"> Sign
-              in</a></p>
 
         </form>
 

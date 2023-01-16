@@ -1,58 +1,64 @@
-const mongoose=require('mongoose');
-const Schema=mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const archiveSchema=new Schema({
-    title:{
-        type:String,
-        required:true
+const archiveSchema = new Schema({
+    title: {
+        type: String,
+        required: true,
     },
-    author:{
-        type:String,
-        required:true
+    author: {
+        type: String,
+        required: true,
     },
-    language:{
-        type:String,
-        required:true
+    text_language: {
+        type: String,
+        required: true,
     },
-    file:{
-        type:String,
-        required:true
+    file: {
+        type: String,
+        required: true,
     },
-    extension:{
-        type:String,
-        required:true
+    extension: {
+        type: String,
+        required: true,
     },
-    bookImage:{
-        type:String,
-        required:true
+    about: {
+        type: String,
     },
-    publisher:{
-        type:String,
-        required:true
+    bookImage: {
+        type: String,
     },
-    year:{
-        type:String,
-        required:true
+    publisher: {
+        type: String,
     },
-    pages:{
-        type:String,
-        required:true
+    year: {
+        type: String,
+        required: true,
     },
-    categories:{
-        type:[],
-        required:true
+    pages: {
+        type: String,
     },
-    uploader:{
-        type:String,
-        required:true
+    categories: {
+        type: [],
     },
-    type:{
-        type:String,
-        required:true
+    type: {
+        type: String,
+        required: true,
     },
+    uploader: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "user",
+        unique: true,
+        required: true,
+    },
+});
 
-})
+archiveSchema.index({
+    title: "text",
+    author: "text",
+    publisher: "text",
+    type: "text",
+});
+const Archive = mongoose.model("archive", archiveSchema);
 
-const Archive =  mongoose.model('archive',archiveSchema);
-
-module.exports= Archive
+module.exports = Archive;
